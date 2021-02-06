@@ -32,6 +32,70 @@ client.on('ready', () => {
             },
         })
     })
+
+        // Joke API
+        if(command === 'joke') {
+            let getJoke = async () => {
+                let response = await axios.get('https://official-joke-api.appspot.com/random_joke')
+                let joke = response.data
+                return joke
+            }
+            let jokeValue = await getJoke()
+            message.reply(`Here's your joke: \n\n ${jokeValue.setup} \n\n ${jokeValue.punchline}`)
+        }
+    
+        // Ping Pong Response
+        if (message.content === 'ping') {
+    
+            message.channel.send('pong')
+        }
+    
+        // Marco Polo Response
+        if (message.content === 'Marco') {
+    
+            message.channel.send('Polo')
+        }
+    
+        // Billy BTS Response
+        if (message.content.toUpperCase().includes('BTS')) {
+    
+            let billyBTS = message.guild.emojis.cache.get('314491276076515328')
+            message.react(billyBTS)
+            message.react('🇧')
+            message.react('🇹')
+            message.react('🇸')
+        }
+    
+        // @ Responses
+        if (message.author.bot) return false
+    
+        if (message.content.includes("@here") || message.content.includes("@everyone")) return false
+    
+        // @Ron Response
+        if (message.mentions.has('142896214566764544')) {
+            
+            let ronYuup = message.guild.emojis.cache.get('357038386089033729')
+            message.react(ronYuup)
+            message.channel.send('ₕₑᵧₘₐₙ')
+        }
+    
+        // @Ron Bot Response
+        if (message.mentions.has(client.user.id)) {
+    
+            message.channel.send('🇾 ' + '🇺 ' + '🆙')
+        }
+    
+        // @Alan Response
+        if (message.mentions.has('448189018585301003')) {
+            
+            message.channel.send('Sorry guys. Gotta get drunk at a party with people!')
+        }
+    
+        // @Justin Bot Response
+        if (message.mentions.has('124409215698731008')) {
+    
+            message.channel.send('Removed!')
+        }
 })
 
 client.login(process.env.DJS_TOKEN)
