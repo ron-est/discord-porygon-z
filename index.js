@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-// const config = require('./config.json')
+
 const command = require('./command')
 
 client.on('ready', () => {
@@ -8,6 +8,12 @@ client.on('ready', () => {
 
     command(client, 'ping', (message) => {
         message.channel.send('Pong!')
+    })
+
+    command(client, 'servers', message => {
+        client.guilds.cache.forEach((guild) => {
+            console.log(guild)
+        })
     })
 })
 
