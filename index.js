@@ -6,4 +6,4 @@ client.on('ready', () => {
     console.log('The client is ready!')
 })
 
-client.login(PROCESS.env.DJS_TOKEN)
+client.login(process.env.DJS_TOKEN)
